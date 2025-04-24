@@ -1,0 +1,181 @@
+# Changelog
+All notable changes to this project will be documented in this file.
+
+The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/),
+and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
+
+## [1.0.4] - 2019-11-29
+### Changed
+- Chanaged salesperson textbox in edit order component template to dropdown
+
+## [1.0.3] - 2019-11-19
+### Changed
+- Added lines 1 to n to orderTotal calculations.
+- Added total calculation for lines 1 to n
+
+## [1.0.2] - 2019-11-19
+### Changed
+- Changed iframe path in edit order component template to https
+- Added change events to line item inputs for shipping, handling, etc.
+
+## [1.0.1] - 2019-11-18
+### Changed
+- Moved iframe in edit order component template for shipping rate calculator to bottom
+- Changed line item total calculator
+
+## [1.0.0] - 2019-11-17
+### Added
+- Added code in edit order component to calculate total for order lines
+- Added total field in edit order component
+- Added iframe in edit order component template for shipping rate calculator
+
+### Changed
+- Corrected bug in edit order component where unabbreviated states caused error.
+- Corrected shipViaCode and termsCode issues in edit order component
+
+## [0.6.2] - 2019-11-12
+### Changed
+- Changed eBay/Amazon terms code
+
+## [0.6.1] - 2019-11-04
+### Added
+- Added access service
+
+## [0.6.0] - 2019-10-22
+### Added
+- Payment received parameter to order model in edit order component
+- Payment Status section to edit order component template
+- Save and Approve button validation based on salesChannel and paymentReceived value
+
+## [0.5.10] - 2019-10-21
+### Added
+- Added discount field
+
+### Changed
+- Corrected issue with adding new lines in edit order component
+- Enabled delete line item button and swapped positions with edit line button in edit order component
+- Set shipping and handling fields to disappear if not first line in edit order template
+
+## [0.5.9] - 2019-10-11
+### Added
+- Added archive button in unapproved orders table in orders component
+
+## [0.5.8] - 2019-10-10
+### Added
+- Added regionCode lookup asset and function in edit order component
+
+### Changed
+- Changed default salesperson to AUTO in edit order component
+
+## [0.5.7] - 2019-10-10
+### Added
+- Added edit note component and related functionality
+
+### Chanaged
+- Changed line item calculations and UI structure in edit order component
+
+## [0.5.6] - 2019-10-09
+### Changed
+- Changed shipViaCodes to trim leading space from code
+
+## [0.5.5] - 2019-10-07
+### Changed
+- Changed default shipViaCode in edit order component to GR.UPSPPA
+
+## [0.5.4] - 2019-09-28
+### Added
+- Added buttons to move orders in archived-orders component
+- Added ng-bootstrap switch for debug mode in settings component
+- Added settings form in settings component
+
+### Changed
+- Completed debugModeService with promise
+
+## [0.5.3] - 2019-09-27
+### Changed
+- Filtered parts for %2F replaced with / in edit order component
+- Added replace of %2F with / in setOrderLines() in edit order component
+
+## [0.5.2] - 2019-09-27
+### Changed
+- Moved orders awaiting download to Alliance to top of orders component
+
+## [0.5.1] - 2019-09-27
+### Changed
+- Changed date to mm/dd/yyyy format in edit orders component
+- Changed lookup arrays for dropdowns from oberservables to regular arrays in edit orders component
+- Code to reverse encoding on termsCode in edit orders component (for proper entry into Alliance)
+- Reworked UI of add lines button in edit orders component
+
+## [0.5.0] - 2019-09-26
+### Added
+- Added code for viewing approved and archived orders (with disabled form)
+- Added preliminary code for debugMode service and UI control in settings component
+- Added preliminary code for ups service
+
+### Changed
+- Several other small visual and code changes
+
+## [0.4.1] - 2019-09-18
+### Changed
+- Added code for default order values
+
+## [0.4.0] - 2019-09-17
+### Added
+- Added us-state-codes package
+- Added setupFormDefaults function in edit order component
+- Added code to fix non-abbreviated states
+
+### Changed
+- Set dateRequired and datePromised values to default to today in edit order component
+
+## [0.3.5] - 2019-09-12
+### Changed
+- Added maxlength parameters to input fields on edit order component to match Alliance db restrictions
+
+## [0.3.4] - 2019-09-10
+### Added
+- Added redirect function to login component to redirect already logged in users to home component (prevent multiple logins)
+
+### Changed
+- Repositioned version number on login component to absolute bottom right
+- Repositioned version number on sidebar component to absolute bottom left
+
+## [0.3.3] - 2019-09-08
+### Changed
+- Responsive formatting on Edit Order html
+- Moved position of version number to sidebar
+
+## [0.3.2] - 2019-09-07
+### Added
+- Added orderMetics cloud function
+
+### Changed
+- Filled in functionality for order metrics on Dashboard
+- Worked on getting version number to display at bottom of page, unsuccessful
+
+## [0.3.1] - 2019-09-07
+### Added
+- Orders component column sort icons
+
+### Changed
+- Responsive formatting on Edit Order html
+- Various other details
+
+## [0.3.0] - 2019-09-06
+### Added
+- Orders component column sorting
+- Select Item component sorting on initial open based on item selected
+- Various other features
+- Archive component
+
+## [0.2.0] - 2019-08-??
+### Added
+- Orders component functionality
+- Edit Orders component functionality
+- Firebase DAL
+- Data Models
+- Routing
+
+
+

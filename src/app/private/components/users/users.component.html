@@ -1,0 +1,62 @@
+<!--Top Bar-->
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-users"></i> Users</h3>
+    <ol class="breadcrumb">
+      <li><fa-icon [icon]="faHouse"></fa-icon><a routerLink="/home" style="text-decoration: none;"> Home</a></li>
+      <li><fa-icon [icon]="faUsers"></fa-icon> Users</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Add User Button -->
+<!-- <div class="row justify-content-end pb-4">
+  <div class="col-md-2">
+    <button class="btn btn-sm btn-block blue-bg">
+      <i class="fa fa-plus"></i>
+      Add User
+    </button>
+  </div>
+</div> -->
+
+<!-- Users Table -->
+<div class="row">
+  <div class="col">
+    <section class="panel">
+      <header class="panel-heading">
+        <div class="row">
+          <div class="col">
+            Users
+          </div>
+          <div class="col-auto align-self-end"></div>
+        </div>
+
+        <!-- <div>
+          <i class="fa fa-plus"></i>
+        </div> -->
+      </header>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th width="50%">Email Address</th>
+            <th>Active</th>
+            <th>Last Login</th>
+            <!-- <th></th> -->
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users; let i = index">
+            <td>{{ i + 1 }}</td>
+            <td>{{ user.email }}</td>
+            <td>True</td>
+            <td>{{ user.metadata.lastSignInTime }}</td>
+            <!-- <td align="right" (click)="deleteUser(i)">
+              <i class="fa fa-trash"></i>
+            </td> -->
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

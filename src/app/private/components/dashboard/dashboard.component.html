@@ -1,0 +1,122 @@
+<!--Top Bar-->
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-tachometer"></i> Dashboard</h3>
+    <ol class="breadcrumb">
+      <li><fa-icon [icon]="faHouse"></fa-icon><a routerLink="/home" style="text-decoration: none;"> Home</a></li>
+      <li><fa-icon [icon]="faGauge"></fa-icon> Dashboard</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Unprocessed Orders Widget -->
+<div class="row">
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="info-box" style="background-color: rgba(31, 31, 87, 0.637)">
+      <fa-icon [icon]="faFile" style="font-size: 6rem;"></fa-icon>
+      <span class="count">&nbsp;&nbsp;{{ orderMetrics?.unapprovedOrderCount }}</span>
+      <div class="col">
+        <span class="title">Unapproved Orders</span>
+      </div>
+    </div>
+    <!--/.info-box-->
+  </div>
+  <!--/.col-->
+
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="info-box" style="background-color:rgba(88, 65, 5, 0.692)">
+      <fa-icon [icon]="faFile" style="font-size: 6rem;"></fa-icon>
+      <span class="count">&nbsp;&nbsp;{{ orderMetrics?.websiteOrderCount }}</span>
+      <div class="col">
+        <span class="title">Website Orders</span>
+      </div>
+    </div>
+    <!--/.info-box-->
+  </div>
+  <!--/.col-->
+
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="info-box dark-bg">
+      <fa-icon [icon]="faFile" style="font-size: 6rem;"></fa-icon>
+      <span class="count">&nbsp;&nbsp;{{ orderMetrics?.ebayOrderCount }}</span>
+      <div class="col">
+        <div class="title">eBay Orders</div>
+      </div>
+    </div>
+    <!--/.info-box-->
+  </div>
+  <!--/.col-->
+
+  <div class="col-lg-3 col-md-3 col-sm-12 col-xs-12">
+    <div class="info-box" style="background-color:rgb(173, 111, 90)">
+      <fa-icon [icon]="faFile" style="font-size: 6rem;"></fa-icon>
+      <span class="count">&nbsp;&nbsp;{{ orderMetrics?.amazonOrderCount }}</span>
+      <div class="title">Amazon Orders</div>
+    </div>
+    <!--/.info-box-->
+  </div>
+  <!--/.col-->
+</div>
+<!--/.row-->
+
+<!-- Buttons -->
+<!-- Dashboard  & Orders Buttons -->
+<div class="row justify-content-center pt-5 pb-3">
+  <div class="col-6">
+    <button style="font-size:large;"
+      type="button"
+      class="btn blue-bg btn-lg btn-block"
+      routerLink="/dashboard"
+    >
+      <i class="icon_house_alt"></i>
+      Dashboard
+    </button>
+  </div>
+
+  <div class="col-6">
+    <button style="font-size:large;"
+      type="button"
+      class="btn blue-bg btn-lg btn-block"
+      routerLink="/orders"
+    >
+      <i class="icon_documents_alt"></i>
+      Orders
+    </button>
+  </div>
+</div>
+
+<!-- Users  & Settings Buttons -->
+<div class="row justify-content-center py-3">
+  <div class="col-6">
+    <button style="font-size:large;"
+      type="button"
+      class="btn blue-bg btn-lg btn-block"
+      routerLink="/users"
+    >
+      <i class="icon_group"></i>
+      Users
+    </button>
+  </div>
+
+  <div class="col-6">
+    <button style="font-size:large;"
+      type="button"
+      class="btn blue-bg btn-lg btn-block"
+      routerLink="/archived-orders"
+    >
+      <i class="icon_cog"></i>
+      Archive
+    </button>
+  </div>
+
+  <!-- <div class="col-6">
+    <button
+      type="button"
+      class="btn blue-bg btn-lg btn-block"
+      routerLink="/settings"
+    >
+      <i class="icon_cog"></i>
+      Settings
+    </button>
+  </div> -->
+</div>

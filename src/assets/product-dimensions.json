@@ -1,0 +1,31 @@
+{
+    "controller": {
+      "length": "10",
+      "width": "10",
+      "height": "15"
+    },
+    "motor": {
+      "length": "16",
+      "width": "7",
+      "height": "8",
+      "weight": "4"
+    },
+    "solenoid": {
+      "length": "6",
+      "width": "5",
+      "height": "5",
+      "weight": "3"
+    },
+    "wire kit": {
+      "length": "9",
+      "width": "11",
+      "height": "3",
+      "weight": "5"
+    },
+    "programming kit": {
+      "length": "8",
+      "width": "8",
+      "height": "5",
+      "weight": "2"
+    }
+  }

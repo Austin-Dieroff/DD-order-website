@@ -1,0 +1,1060 @@
+<!--Top Bar-->
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-file"></i> Edit Order</h3>
+    <ol class="breadcrumb">
+      <li><fa-icon [icon]="faHouse"></fa-icon><a routerLink="/home" style="text-decoration: none;"> Home</a></li>
+      <li>
+        <fa-icon [icon]="faFolderOpen"></fa-icon><a routerLink="/orders" style="text-decoration: none;"> Orders</a>
+      </li>
+      <li><fa-icon [icon]="faFile"></fa-icon> Edit Order [{{ orderId }}]</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Order Form -->
+<div class="col-lg-12">
+  <form [formGroup]="orderForm">
+    <!-- <form [formGroup]="testForm"> -->
+
+    <!-- Row #1 -->
+    <div class="row">
+      <div class="col">
+        <!-- Order Details -->
+        <section class="panel">
+          <header class="panel-heading">
+            <div class="row">
+              <div class="col">Order Details</div>
+              <div class="col-auto align-self-end">
+                <!-- Status: {{orderForm.controls["orderId"].value}} -->
+                Status: {{ status | titlecase }}
+              </div>
+            </div>
+          </header>
+          <div class="panel-body form-horizontal">
+            <!-- Order ID -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Order ID</label>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="orderId"
+                />
+              </div>
+            </div>
+
+            <!-- Sales Channel -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Sales Channel</label>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  class="form-control"
+                  formControlName="salesChannel"
+                />
+              </div>
+            </div>
+
+            <!-- Order Date -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Order Date</label>
+              <div class="col-sm-7">
+                <input
+                  type="text"
+                  class="form-control"
+                  disabled
+                  [value]="orderDate"
+                />
+              </div>
+            </div>
+
+            <!-- Ship Date -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Ship Date</label>
+              <div class="col-sm-7">
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="shipDate"
+                />
+              </div>
+            </div>
+
+            <!-- Date Required -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Date Required</label>
+              <div class="col-sm-7">
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="dateRequired"
+                />
+              </div>
+            </div>
+
+            <!-- Date Promised -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Date Promised</label>
+              <div class="col-sm-7">
+                <input
+                  type="date"
+                  class="form-control"
+                  formControlName="datePromised"
+                />
+              </div>
+            </div>
+
+            <!-- Job Number -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Job Number</label>
+              <div class="col-sm-5">
+                <div formGroupName="orderDetails">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="jobNumber"
+                  />
+                </div>
+              </div>
+            </div>
+
+            <!-- Salesperson -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Salesperson</label>
+              <div class="col-sm-5">
+                <div formGroupName="orderDetails">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="salesperson"
+                  >
+                    <option value="" disabled>Choose salesperson</option>
+                    <option
+                      *ngFor="let sperson of salespeople"
+                      [ngValue]="sperson"
+                    >
+                      {{ sperson }}
+                    </option>
+                  </select>
+
+                  <!-- <input
+                type="text"
+                class="form-control"
+                formControlName="salesperson"
+              /> -->
+                </div>
+              </div>
+            </div>
+
+            <!-- Department Code -->
+            <div class="form-group">
+              <label class="col-sm-2 control-label">Department Code</label>
+              <div class="col-sm-7">
+                <div formGroupName="orderDetails">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="departmentCode"
+                  >
+                    <option value="" disabled>Choose code</option>
+                    <option
+                      *ngFor="let departmentCode of departmentCodes"
+                      [ngValue]="departmentCode.Code"
+                    >
+                      {{ departmentCode.Code }} -
+                      {{ departmentCode.Description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col">
+        <!-- Customer Details -->
+        <section class="panel">
+          <header class="panel-heading">Customer Details</header>
+          <div class="panel-body form-horizontal">
+            <div formGroupName="customerDetails">
+              <!-- Terms Code -->
+              <div class="form-group row">
+                <label class="col-sm-2 control-label">Terms Code</label>
+                <div class="col-sm-7">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="termsCode"
+                  >
+                    <option value="" disabled>Choose code</option>
+                    <option
+                      *ngFor="let termsCode of termsCodes"
+                      [ngValue]="termsCode.Code"
+                    >
+                      {{ termsCode.Code }} - {{ termsCode.Description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Region Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Region Code</label>
+                <div class="col-sm-7">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="regionCode"
+                  >
+                    <option value="" disabled>Choose code</option>
+                    <option
+                      *ngFor="let regionCode of regionCodes"
+                      [ngValue]="regionCode.Code"
+                    >
+                      {{ regionCode.Code }} - {{ regionCode.Description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- FOB Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">FOB Code</label>
+                <div class="col-sm-7">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="fobCode"
+                  >
+                    <option value="" disabled>Choose code</option>
+                    <option
+                      *ngFor="let fOBCode of fOBCodes"
+                      [ngValue]="fOBCode.Code"
+                    >
+                      {{ fOBCode.Code }} - {{ fOBCode.Description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Ship Via Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Ship Via Code</label>
+                <div class="col-sm-7">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="shipViaCode"
+                  >
+                    <!-- <option value="" disabled>Choose code</option> -->
+                    <option
+                      *ngFor="let shipViaCode of shipViaCodes"
+                      [ngValue]="shipViaCode.Code"
+                    >
+                      {{ shipViaCode.Code }} - {{ shipViaCode.Description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Currency Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Currency Code</label>
+                <div class="col-sm-7">
+                  <select
+                    type="text"
+                    class="form-control"
+                    formControlName="currencyCode"
+                  >
+                    <option value="" disabled>Choose code</option>
+                    <option
+                      *ngFor="let currencyCode of currencyCodes"
+                      [ngValue]="currencyCode.Code"
+                    >
+                      {{ currencyCode.Code }} - {{ currencyCode.Description }}
+                    </option>
+                  </select>
+                </div>
+              </div>
+
+              <!-- Currency Rate -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Currency Rate</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    formControlName="currencyRate"
+                  />
+                </div>
+              </div>
+
+              <!-- VAT Branch ID -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">VAT Branch ID</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="3"
+                    formControlName="vatBranchID"
+                  />
+                </div>
+              </div>
+
+              <!-- User Defined 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">User Defined 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="10"
+                    formControlName="userDefined1"
+                  />
+                </div>
+              </div>
+
+              <!-- Order Discount -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Order Discount</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="10"
+                    formControlName="discount"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Row #2 -->
+    <div class="row">
+      <div class="col">
+        <!-- Bill To Contact -->
+        <section class="panel">
+          <header class="panel-heading">Bill To Contact</header>
+          <div class="panel-body form-horizontal">
+            <div formGroupName="billToContact">
+              <!-- Name -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="name"
+                  />
+                </div>
+              </div>
+
+              <!-- Phone 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Phone 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="phone1"
+                  />
+                </div>
+              </div>
+
+              <!-- Phone 2 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Phone 2</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="phone2"
+                  />
+                </div>
+              </div>
+
+              <!-- Fax 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fax 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="fax1"
+                  />
+                </div>
+              </div>
+
+              <!-- Fax 2 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fax 2</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="fax2"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-7">
+                  <input
+                    type="email"
+                    class="form-control"
+                    maxlength="50"
+                    formControlName="email"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col">
+        <!-- Ship To Contact -->
+        <section class="panel">
+          <header class="panel-heading">Ship To Contact</header>
+          <div class="panel-body form-horizontal">
+            <div formGroupName="shipToContact">
+              <!-- Name -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Name</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="name"
+                  />
+                </div>
+              </div>
+
+              <!-- Phone 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Phone 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="phone1"
+                  />
+                </div>
+              </div>
+
+              <!-- Phone 2 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Phone 2</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="phone2"
+                  />
+                </div>
+              </div>
+
+              <!-- Fax 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fax 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="fax1"
+                  />
+                </div>
+              </div>
+
+              <!-- Fax 2 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Fax 2</label>
+                <div class="col-sm-7">
+                  <input
+                    type="tel"
+                    class="form-control"
+                    maxlength="30"
+                    formControlName="fax2"
+                  />
+                </div>
+              </div>
+
+              <!-- Email -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Email</label>
+                <div class="col-sm-7">
+                  <input
+                    type="email"
+                    class="form-control"
+                    maxlength="50"
+                    formControlName="email"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Row #3 -->
+    <div class="row">
+      <div class="col">
+        <!-- Bill To Address-->
+        <section class="panel">
+          <header class="panel-heading">Bill To Address</header>
+          <div class="panel-body form-horizontal">
+            <div formGroupName="billToAddress">
+              <!-- Address Line 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine1"
+                  />
+                </div>
+              </div>
+
+              <!-- Address Line 2 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 2</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine2"
+                  />
+                </div>
+              </div>
+
+              <!-- Address Line 3 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 3</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine3"
+                  />
+                </div>
+              </div>
+
+              <!-- Address Line 4 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 4</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine4"
+                  />
+                </div>
+              </div>
+
+              <!-- City -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">City</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="28"
+                    formControlName="city"
+                  />
+                </div>
+              </div>
+
+              <!-- State -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">State</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="3"
+                    formControlName="state"
+                  />
+                </div>
+              </div>
+
+              <!-- Zip Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Zip Code</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="9"
+                    formControlName="zipCode"
+                  />
+                </div>
+              </div>
+
+              <!-- Country -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Country</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="20"
+                    formControlName="country"
+                  />
+                </div>
+              </div>
+
+              <!-- Postal -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Postal</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="10"
+                    formControlName="postal"
+                  />
+                </div>
+              </div>
+
+              <!-- Tax Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Tax Code</label>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="10"
+                    formControlName="taxCode"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+      <div class="col">
+        <!-- Ship To Address-->
+        <section class="panel">
+          <header class="panel-heading">Ship To Address</header>
+          <div class="panel-body form-horizontal">
+            <div formGroupName="shipToAddress">
+              <!-- Address Line 1 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 1</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine1"
+                  />
+                </div>
+              </div>
+
+              <!-- Address Line 2 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 2</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine2"
+                  />
+                </div>
+              </div>
+
+              <!-- Address Line 3 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 3</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine3"
+                  />
+                </div>
+              </div>
+
+              <!-- Address Line 4 -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Address Line 4</label>
+                <div class="col-sm-7">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="40"
+                    formControlName="addressLine4"
+                  />
+                </div>
+              </div>
+
+              <!-- City -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">City</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="28"
+                    formControlName="city"
+                  />
+                </div>
+              </div>
+
+              <!-- State -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">State</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="3"
+                    formControlName="state"
+                  />
+                </div>
+              </div>
+
+              <!-- Zip Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Zip Code</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="9"
+                    formControlName="zipCode"
+                  />
+                </div>
+              </div>
+
+              <!-- Country -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Country</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="20"
+                    formControlName="country"
+                  />
+                </div>
+              </div>
+
+              <!-- Postal -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Postal</label>
+                <div class="col-sm-5">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="10"
+                    formControlName="postal"
+                  />
+                </div>
+              </div>
+
+              <!-- Tax Code -->
+              <div class="form-group">
+                <label class="col-sm-2 control-label">Tax Code</label>
+                <div class="col-sm-4">
+                  <input
+                    type="text"
+                    class="form-control"
+                    maxlength="10"
+                    formControlName="taxCode"
+                  />
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Order Lines -->
+    <div class="row">
+      <div class="col">
+        <section class="panel">
+          <header class="panel-heading">Lines</header>
+          <!-- <div class="table-responsive-sm" formArrayName="lines">
+            <table class="table">
+              <thead></thead>
+            </table>
+          </div> -->
+          <table class="table table-hover">
+            <thead>
+              <tr>
+                <th></th>
+                <th width="20%">Part Number</th>
+                <th width="40%">Description</th>
+                <th>Quantity</th>
+                <th>Shipping</th>
+                <th>Handling</th>
+                <th>Item Price</th>
+                <th>Tax</th>
+                <th></th>
+                <th>Total</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody formArrayName="lines">
+              <tr
+                *ngFor="let line of order.lines; let i = index; trackBy: trackByFn"
+                [formGroupName]="i"
+              >
+                <!-- Delete Item -->
+                <td>
+                  <fa-icon [icon]="faTrash" (click)="removeLine(i)"></fa-icon>
+                </td>
+
+                <!-- Part Number -->
+                <td (click)="openSelectItem(i, line.partNumber)">
+                  {{ line.partNumber }}
+                </td>
+
+                <!-- Description -->
+                <td>
+                  {{ getItemDescription(line.partNumber) }}
+                </td>
+
+                <!-- Quantity -->
+                <td>
+                  <input
+                    type="number"
+                    class="form-control"
+                    formControlName="qty"
+                    style="width: 75px"
+                    (ngModelChange)="setItemTotals()"
+                  />
+                </td>
+                <!-- Shipping -->
+                <td>
+                  <div *ngIf="i == 0">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="shipping"
+                      style="width: 75px"
+                      (change)="setItemTotals()"
+                    />
+                  </div>
+                </td>
+
+                <!-- Handling -->
+                <td>
+                  <div *ngIf="i == 0">
+                    <input
+                      type="number"
+                      class="form-control"
+                      formControlName="handling"
+                      style="width: 75px"
+                      (change)="setItemTotals()"
+                    />
+                  </div>
+                </td>
+
+                <!-- Item Price -->
+                <td>
+                  <div>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0.00"
+                      class="form-control"
+                      formControlName="price"
+                      style="width: 100px"
+                      (change)="setItemTotals()"
+                    />
+                  </div>
+                </td>
+
+                <!-- Tax -->
+                <td>
+                  <div>
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0.00"
+                      class="form-control"
+                      formControlName="tax"
+                      style="width: 75px"
+                      (change)="setItemTotals()"
+                    />
+                  </div>
+                </td>
+
+                <!-- Calculation -->
+                <td></td>
+
+                <!-- Total -->
+                <td>
+                  <!-- {{ calculateLineTotal(i) | currency }} -->
+                  <input
+                    type="number"
+                    step="0.01"
+                    min="0.00"
+                    class="form-control"
+                    formControlName="total"
+                    style="width: 100px"
+                  />
+                </td>
+
+                <!-- Add Line/Edit Note -->
+                <td align="right" style="white-space: nowrap">
+                  <fa-icon [icon]="faFolderOpen" (click)="openNotes(i)"></fa-icon>
+                  <fa-icon [icon]="faFilePen" (click)="openSelectItem(i, line.partNumber)"></fa-icon>
+                </td>
+              </tr>
+            </tbody>
+            <tfoot>
+              <tr>
+                <td colspan="7"></td>
+                <td colspan="2">Total:</td>
+                <td style="justify-self: end">
+                  <span *ngIf="!order.orderDetails.orderTotal"
+                    >[not provided]</span
+                  >
+                  <!-- {{ order.orderDetails.orderTotal | currency }} -->
+                  <div formGroupName="orderDetails">
+                    <input
+                      type="number"
+                      step="0.01"
+                      min="0.00"
+                      class="form-control"
+                      formControlName="orderTotal"
+                      style="width: 100px"
+                      (change)="setItemTotals()"
+                    />
+                  </div>
+                </td>
+              </tr>
+            </tfoot>
+          </table>
+          <div class="row justify-content-end p-4" *ngIf="!disabled">
+            <div class="col-3">
+              <button class="btn blue-bg btn-block btn-lg" (click)="addLine()">
+                <i class="fa fa-plus"></i>
+                Add Line
+              </button>
+            </div>
+          </div>
+        </section>
+      </div>
+    </div>
+
+    <!-- Other -->
+    <section class="panel">
+      <header class="panel-heading">Other</header>
+      <div class="panel-body">
+        <!-- Notes -->
+        <div class="form-group">
+          <label class="col-sm-2 control-label">Notes</label>
+          <div class="col-sm-10">
+            <textarea  style="font-size: small;"
+              rows="5"
+              class="form-control"
+              maxlength="255"
+              formControlName="notes"
+            ></textarea>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Payment Received -->
+    <section
+      class="panel"
+      *ngIf="
+        orderForm.controls.salesChannel.value === 'PayPal' ||
+        orderForm.controls.salesChannel.value === 'Amazon Pay'
+      "
+    >
+      <header class="panel-heading">Payment Status</header>
+      <div class="panel-body">
+        <!-- Notes -->
+        <div class="form-group">
+          <div class="col-sm-2">
+            <input type="checkbox" formControlName="paymentReceived" />
+          </div>
+          <label class="col-sm-10 control-label">
+            Check box if you have confirmed payment receipt via PayPal/Amazon
+            Pay email.
+          </label>
+        </div>
+      </div>
+    </section>
+  </form>
+</div>
+
+<!-- Save Button -->
+<div class="row justify-content-end" *ngIf="!disabled">
+  <div class="col-3" *ngIf="false">
+    <button class="btn blue-bg btn-lg btn-block" (click)="test()">Test</button>
+  </div>
+  <div class="col-3">
+    <button class="btn blue-bg btn-lg btn-block" (click)="save()">
+      <i class="fa fa-save"></i>
+      Save
+    </button>
+  </div>
+  <div class="col-4">
+    <button
+      class="btn blue-bg btn-lg btn-block"
+      (click)="saveAndApprove()"
+      [disabled]="
+        (orderForm.controls.salesChannel.value === 'PayPal' ||
+          orderForm.controls.salesChannel.value === 'Amazon Pay') &&
+        orderForm.controls.paymentReceived.value == false
+      "
+    >
+      <i class="fa fa-check"></i>
+      Save & Approve
+    </button>
+  </div>
+</div>
+
+<!-- Close Button -->
+<div class="row justify-content-end" *ngIf="disabled">
+  <div class="col-4">
+    <button class="btn blue-bg btn-lg btn-block" (click)="close()">
+      <i class="fa fa-times"></i>
+      Close
+    </button>
+  </div>
+</div>
+
+<!-- Shipping Rate IFrame -->
+<div class="mt-4">
+  <section class="panel">
+    <header class="panel-heading">Shipping Rate</header>
+    <div class="panel-body">
+      <iframe
+        src="https://ddmotorsystems.com/UPSWidget/index.php"
+        style="width: 100%; height: 330px"
+      ></iframe>
+    </div>
+  </section>
+</div>

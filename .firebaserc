@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "order-integration-9400f": {
+      "hosting": {
+        "order-website": [
+          "order-integration-9400f"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "order-integration-9400f"
+  }
+}

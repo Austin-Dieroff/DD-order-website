@@ -1,0 +1,36 @@
+<!--Top Bar-->
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-cog"></i> Settings</h3>
+    <ol class="breadcrumb">
+      <li><fa-icon [icon]="faHouse"></fa-icon><a routerLink="/home" style="text-decoration: none;"> Home</a></li>
+      <li><fa-icon [icon]="faGear"></fa-icon> Settings</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Main Content -->
+<form [formGroup]="settingsForm">
+
+<div class="row mt-4">
+  <div class="col-md-2">
+    Debug Mode: 
+  </div>
+  <div class="col">
+    <div
+      class="btn-group btn-group-toggle"
+      ngbRadioGroup
+      name="radioBasic"
+      formControlName="debugMode"
+      (change)="debugModeChange($event)"
+    >
+      <label ngbButtonLabel class="btn-secondary">
+        <input ngbButton type="radio" [value]="true" />Enabled
+      </label>
+      <label ngbButtonLabel class="btn-secondary">
+        <input ngbButton type="radio" [value]="false" />Disabled
+      </label>
+    </div>
+  </div>
+</div>
+</form>

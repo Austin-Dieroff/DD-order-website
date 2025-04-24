@@ -1,0 +1,210 @@
+[
+  {
+    "state": "AK",
+    "regionCode": "Alaska"
+  },
+    {
+    "state": "AL",
+    "regionCode": "SE"
+  },
+    {
+    "state": "AR",
+    "regionCode": "S"
+  },
+    {
+    "state": "AZ",
+    "regionCode": "SW"
+  },
+    {
+    "state": "CA",
+    "regionCode": "W"
+  },
+    {
+    "state": "CO",
+    "regionCode": "Central"
+  },
+    {
+    "state": "CT",
+    "regionCode": "NE"
+  },
+    {
+    "state": "DC",
+    "regionCode": "E"
+  },
+    {
+    "state": "DE",
+    "regionCode": "E"
+  },
+    {
+    "state": "FL",
+    "regionCode": "SE"
+  },
+    {
+    "state": "GA",
+    "regionCode": "SE"
+  },
+    {
+    "state": "HI",
+    "regionCode": "Hawaii"
+  },
+    {
+    "state": "IA",
+    "regionCode": "N"
+  },
+    {
+    "state": "ID",
+    "regionCode": "NW"
+  },
+    {
+    "state": "IL",
+    "regionCode": "N"
+  },
+    {
+    "state": "IN",
+    "regionCode": "N"
+  },
+    {
+    "state": "KS",
+    "regionCode": "Central"
+  },
+    {
+    "state": "KY",
+    "regionCode": "E"
+  },
+    {
+    "state": "LA",
+    "regionCode": "S"
+  },
+    {
+    "state": "MA",
+    "regionCode": "NE"
+  },
+    {
+    "state": "MD",
+    "regionCode": "E"
+  },
+    {
+    "state": "ME",
+    "regionCode": "NE"
+  },
+    {
+    "state": "MI",
+    "regionCode": "N"
+  },
+    {
+    "state": "MN",
+    "regionCode": "N"
+  },
+    {
+    "state": "MO",
+    "regionCode": "Central"
+  },
+    {
+    "state": "MS",
+    "regionCode": "S"
+  },
+    {
+    "state": "MT",
+    "regionCode": "NW"
+  },
+    {
+    "state": "NC",
+    "regionCode": "E"
+  },
+    {
+    "state": "ND",
+    "regionCode": "N"
+  },
+    {
+    "state": "NE",
+    "regionCode": "Central"
+  },
+    {
+    "state": "NH",
+    "regionCode": "NE"
+  },
+    {
+    "state": "NJ",
+    "regionCode": "NE"
+  },
+    {
+    "state": "NM",
+    "regionCode": "SW"
+  },
+    {
+    "state": "NV",
+    "regionCode": "W"
+  },
+    {
+    "state": "NY",
+    "regionCode": "NE"
+  },
+    {
+    "state": "OH",
+    "regionCode": "N"
+  },
+    {
+    "state": "OK",
+    "regionCode": "S"
+  },
+    {
+    "state": "OR",
+    "regionCode": "NW"
+  },
+    {
+    "state": "PA",
+    "regionCode": "NE"
+  },
+    {
+    "state": "PR",
+    "regionCode": "Carib - PR"
+  },
+    {
+    "state": "RI",
+    "regionCode": "NE"
+  },
+    {
+    "state": "SC",
+    "regionCode": "SE"
+  },
+    {
+    "state": "SD",
+    "regionCode": "N"
+  },
+    {
+    "state": "TN",
+    "regionCode": "E"
+  },
+    {
+    "state": "TX",
+    "regionCode": "S"
+  },
+    {
+    "state": "UT",
+    "regionCode": "W"
+  },
+    {
+    "state": "VA",
+    "regionCode": "E"
+  },
+    {
+    "state": "VT",
+    "regionCode": "NE"
+  },
+    {
+    "state": "WA",
+    "regionCode": "NW"
+  },
+    {
+    "state": "WI",
+    "regionCode": "N"
+  },
+    {
+    "state": "WV",
+    "regionCode": "E"
+  },
+    {
+    "state": "WY",
+    "regionCode": "NW"
+  }
+]

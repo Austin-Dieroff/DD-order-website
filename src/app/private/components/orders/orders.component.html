@@ -1,0 +1,217 @@
+<!--Top Bar-->
+<div class="row">
+  <div class="col">
+    <h3 class="page-header"><i class="fa fa-file"></i> Orders</h3>
+    <ol class="breadcrumb">
+      <li><fa-icon [icon]="faHouse"></fa-icon><a routerLink="/home" style="text-decoration: none;"> Home</a></li>
+      <li><fa-icon [icon]="faFile"></fa-icon> Orders</li>
+    </ol>
+  </div>
+</div>
+
+<!-- Orders Awaiting Download to Alliance -->
+<div class="row mt-4">
+  <div class="col">
+    <section class="panel">
+      <header class="panel-heading">
+        Orders Awaiting Download to Alliance
+      </header>
+      <table
+        class="table table-hover"
+        *ngIf="(approvedOrders$ | async)?.length !== 0"
+      >
+        <thead>
+          <tr>
+            <th width="15%">Order #</th>
+            <th width="25%">Ship To Name</th>
+            <th width="25%">Bill To Name</th>
+            <th width="10%">Source</th>
+            <th>Order Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of approvedOrders$ | async">
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'approvedOrders',
+                disabled: true
+              }"
+            >
+              {{ order.orderId }}
+            </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'approvedOrders',
+                disabled: true
+              }"
+            >
+              {{ order.shipToContact.name | titlecase }}
+            </td>
+            <td
+            [routerLink]="['/edit-order']"
+            [queryParams]="{
+              id: order.orderId,
+              collection: 'approvedOrders',
+              disabled: true
+            }"
+          >
+            {{ order.billToContact.name | titlecase }}
+          </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'approvedOrders',
+                disabled: true
+              }"
+            >
+              {{ order.salesChannel | lowercase }}
+            </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'approvedOrders',
+                disabled: true
+              }"
+            >
+              {{ formatDate(order.date) }}
+            </td>
+            <td>
+              <button style="font-size:14px;"
+                type="button"
+                class="btn btn-secondary btn-lg"
+                *ngIf="debugMode"
+                (click)="
+                  moveOrder(order.orderId, 'approvedOrders', 'archivedOrders')
+                "
+              >
+                Archive
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="text-center px-4" *ngIf="!(approvedOrders$ | async)?.length">
+        ***No Orders Awaiting Download***
+      </div>
+    </section>
+  </div>
+</div>
+
+<!-- Orders Awaiting Approval -->
+<div class="row mt-4">
+  <div class="col">
+    <section class="panel">
+      <header class="panel-heading">Orders Awaiting Approval</header>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th (click)="sortOrders('orderId')" width="15%">
+              Order #
+              <i class="fa fa-sort"></i>
+            </th>
+            <th (click)="sortOrders('shipToContact.name')" width="25%">
+              Ship To Name
+              <i class="fa fa-sort"></i>
+            </th>
+            <th (click)="sortOrders('billToContact.name')" width="25%">
+              Bill To Name
+              <i class="fa fa-sort"></i>
+            </th>
+            <th (click)="sortOrders('salesChannel')" width="10%">
+              Source
+              <i class="fa fa-sort"></i>
+            </th>
+            <th (click)="sortOrders('date')">
+              Order Date
+              <i class="fa fa-sort"></i>
+            </th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of unapprovedOrders$ | async">
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'unapprovedOrders'
+              }"
+            >
+              {{ order.orderId }}
+            </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'unapprovedOrders'
+              }"
+            >
+              {{ order.shipToContact.name | titlecase }}
+            </td>
+            <td
+            [routerLink]="['/edit-order']"
+            [queryParams]="{
+              id: order.orderId,
+              collection: 'unapprovedOrders'
+            }"
+          >
+            {{ order.billToContact.name | titlecase }}
+          </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'unapprovedOrders'
+              }"
+            >
+              {{ order.salesChannel | lowercase }}
+            </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'unapprovedOrders'
+              }"
+            >
+              {{ formatDate(order.date) }}
+            </td>
+            <td align="right">
+              <a
+                [routerLink]="['/edit-order']"
+                [queryParams]="{
+                  id: order.orderId,
+                  collection: 'unapprovedOrders'
+                }"
+              > <fa-icon [icon]="faFilePen"></fa-icon>
+              </a>
+              <ng-container *ngIf="debugMode">
+                /
+                <i (click)="deleteOrder(order.orderId, 'unapprovedOrders')"
+                  ><fa-icon [icon]="faTrash"></fa-icon>
+                </i>
+                /
+                <i
+                  (click)="
+                    moveOrder(
+                      order.orderId,
+                      'unapprovedOrders',
+                      'archivedOrders'
+                    )
+                  "
+                  ><fa-icon [icon]="faFolderOpen"></fa-icon>
+                </i>
+              </ng-container>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

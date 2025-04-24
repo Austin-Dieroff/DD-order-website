@@ -1,0 +1,27 @@
+[
+  {
+    "partNumber": "XCT - 300 - DCS",
+    "quantity": "1",
+    "customerPrice": "10.00"
+  },
+  {
+    "partNumber": "XCT - 300 - G19",
+    "quantity": "2",
+    "customerPrice": "20.00"
+  },
+  {
+    "partNumber": "XCT - 300 - G22",
+    "quantity": "3",
+    "customerPrice": "30.00"
+  },
+  {
+    "partNumber": "XCT - 300 - IQ",
+    "quantity": "4",
+    "customerPrice": "40.00"
+  },
+  {
+    "partNumber": "XCT - 300 - PDS",
+    "quantity": "5",
+    "customerPrice": "50.00"
+  }
+]

@@ -1,0 +1,162 @@
+<!--Top Bar-->
+<div class="row">
+  <div class="col-lg-12">
+    <h3 class="page-header"><i class="fa fa-file"></i> Archived Orders</h3>
+    <ol class="breadcrumb">
+      <li><fa-icon [icon]="faHouse"></fa-icon><a routerLink="/home" style="text-decoration: none;"> Home</a></li>
+      <li><fa-icon [icon]="faFile"></fa-icon> Orders</li>
+    </ol>
+  </div>
+</div>
+
+<div class="row justify-content-end mt-1 mb-2">
+  <div class="col-auto">
+    <select class="form-select" style="font-size: small;" aria-label="Default select example" (change)="pageSizeChange($event)">
+      <option value="200">200</option>
+      <option value="2000">2000</option>
+      <option value="6000">6000</option>
+      <option value="">All</option>
+    </select>
+  </div>
+  <div class="col-auto">
+    <button style="font-size: small;"
+      type="button"
+      class="btn btn-secondary"
+      (click)="loadPreviousPage()"
+    >
+      Prev Page
+    </button>
+  </div>
+  <div class="col-auto" style="font-size: 16px;">
+    Page: {{firstDocs.length}}
+  </div>
+  <div class="col-auto">
+    <button type="button" class="btn btn-secondary" style="font-size: small;" (click)="loadNextPage()">
+      Next Page
+    </button>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col">
+    <section class="panel">
+      <header class="panel-heading">Archived Orders</header>
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th (click)="sortOrders('orderId')">Order #</th>
+            <th (click)="sortOrders('shipToContact.name')" width="20%">Ship To Name</th>
+            <th (click)="sortOrders('billToContact.name')" width="20%">Bill To Name</th>
+            <th (click)="sortOrders('salesChannel')" width="10%">Source</th>
+            <th (click)="sortOrders('date')">Order Date</th>
+            <th></th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let order of archivedOrders$ | async">
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'archivedOrders',
+                disabled: true
+              }"
+            >
+              {{ order.orderId }}
+            </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'archivedOrders',
+                disabled: true
+              }"
+            >
+              {{ order.shipToContact.name | titlecase }}
+            </td>
+            <td
+            [routerLink]="['/edit-order']"
+            [queryParams]="{
+              id: order.orderId,
+              collection: 'archivedOrders',
+              disabled: true
+            }"
+          >
+            {{ order.billToContact.name | titlecase }}
+          </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'archivedOrders',
+                disabled: true
+              }"
+            >
+              {{ order.salesChannel | lowercase }}
+            </td>
+            <td
+              [routerLink]="['/edit-order']"
+              [queryParams]="{
+                id: order.orderId,
+                collection: 'archivedOrders',
+                disabled: true
+              }"
+            >
+              {{ formatDate(order.date) }}
+            </td>
+            <td>
+              <!-- <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                *ngIf="debugMode"
+                (click)="
+                  moveOrder(order.orderId, 'archivedOrders', 'approvedOrders')
+                "
+              >
+                Approved
+              </button>
+              <button
+                type="button"
+                class="btn btn-secondary btn-sm"
+                *ngIf="debugMode"
+                (click)="
+                  moveOrder(order.orderId, 'archivedOrders', 'unapprovedOrders')
+                "
+              >
+                Unapproved
+              </button> -->
+              <div
+                class="btn-group btn-group-sm"
+                role="group"
+                *ngIf="debugMode"
+              >
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="
+                    moveOrder(order.orderId, 'archivedOrders', 'approvedOrders')
+                  "
+                >
+                  Approved
+                </button>
+                <button
+                  type="button"
+                  class="btn btn-secondary"
+                  (click)="
+                    moveOrder(
+                      order.orderId,
+                      'archivedOrders',
+                      'unapprovedOrders'
+                    )
+                  "
+                >
+                  Unapproved
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </div>
+</div>

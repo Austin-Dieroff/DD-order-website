@@ -1,0 +1,57 @@
+<!-- Padding Div-->
+<div style="margin: 20px;">
+
+  <!-- Filter Field -->
+  <div class="row">
+    <div class="col">
+      <mat-form-field style="width: 100%">
+        <input
+          matInput
+          (keyup)="applyFilter($event.target.value)"
+          placeholder="Filter"
+          [(ngModel)]='filter'
+        />
+      </mat-form-field>
+    </div>
+    <div class="col-4">
+      <button [mat-dialog-close]="selectedPartNumber" class="btn blue-bg btn-block btn-lg">
+        Select
+      </button>
+    </div>
+  </div>
+
+  <mat-dialog-content>
+    <!-- Parts table -->
+    <mat-table [dataSource]="dataSource" style="width: 100%; height: 100%;">
+      <!-- Part Number Column -->
+      <ng-container matColumnDef="PartNumber">
+        <mat-header-cell *matHeaderCellDef>Part #</mat-header-cell>
+        <mat-cell *matCellDef="let part">{{ part.PartNumber }}</mat-cell>
+      </ng-container>
+
+      <!-- Description Column -->
+      <ng-container matColumnDef="Description">
+        <mat-header-cell *matHeaderCellDef>Description</mat-header-cell>
+        <mat-cell *matCellDef="let part">{{ part.Description }}</mat-cell>
+      </ng-container>
+
+      <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
+      <mat-row
+        *matRowDef="let row; columns: displayedColumns"
+        (click)="selectItem(row)"
+        [style.background]="
+          selectedPartNumber == row.PartNumber ? 'lightblue' : ''
+        "
+      ></mat-row>
+    </mat-table>
+
+    <mat-paginator [pageSizeOptions]="[10]" showFirstLastButtons></mat-paginator>
+  </mat-dialog-content>
+
+</div>
+
+<!-- <div mat-dialog-actions align="end">
+  <button mat-dialog-close class="btn blue-bg btn-block">
+    Select
+  </button>
+</div> -->

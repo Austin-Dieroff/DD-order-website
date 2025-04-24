@@ -1,0 +1,64 @@
+<!-- <div class="login-img3-body"> -->
+<body class="login">
+  <div class="container">
+    <form class="login-form">
+      <div class="h2 text-center pt-2">
+        D&D Motor Systems Orders Login
+      </div>
+      <div class="login-wrap">
+        <p class="login-img pb-2"><i class="icon_lock_alt"></i></p>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_profile"></i></span>
+          <input
+            type="email"
+            class="form-control"
+            name="email"
+            placeholder="Email"
+            autocomplete="on"
+            [(ngModel)]="email"
+            autofocus
+          />
+        </div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="icon_key_alt"></i></span>
+          <input
+            type="password"
+            class="form-control"
+            name="password"
+            placeholder="Password"
+            [(ngModel)]="password"
+            (keydown.enter)="loginClick()"
+          />
+        </div>
+        <label class="checkbox">
+          <input type="checkbox" value="remember-me" /> Remember me
+          <span class="pull-right"> <a href="#"> Forgot Password?</a></span>
+        </label>
+        <button
+          class="btn btn-primary btn-lg btn-block"
+          type="button"
+          (click)="loginClick()"
+        >
+          Login
+        </button>
+        <button
+          class="btn btn-info btn-lg btn-block"
+          type="button"
+          disabled="true"
+        >
+          Signup
+        </button>
+      </div>
+    </form>
+    <!-- <div class="text-right">
+      <div class="credits">
+        Created by
+        <a href="https://secondstreetdevelopment.com/">
+            Second Street Development
+            </a>
+      </div>
+    </div> -->
+  </div>
+</body>
+
+<!-- </div> -->

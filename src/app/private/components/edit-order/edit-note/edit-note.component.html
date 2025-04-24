@@ -1,0 +1,16 @@
+
+<div style="margin: 20px;">
+  <h4 class="page-header">Edit Note</h4>
+  <div class="row">
+    <div class="col">
+      <textarea rows="10" class="form-control" style="min-width: 100%; font-size: small;" [(ngModel)]="note"></textarea>
+    </div>
+  </div>
+  <div class="row justify-content-end pt-4">
+    <div class="col-4">
+      <button [mat-dialog-close]="note" class="btn blue-bg btn-block btn-lg">
+        Save
+      </button>
+    </div>
+  </div>
+</div>
